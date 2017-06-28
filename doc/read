@@ -1,0 +1,5 @@
+tv_Courier_number  快递单号
+image_express    快递公司png
+tv_Courier_state  快递状态
+tv_Courier_info 快递信息
+tv_Courier_time  快递时间
