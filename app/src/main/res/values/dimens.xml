@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="item_text_size">12sp</dimen>
+    <dimen name="text_size_normal">16sp</dimen>
+    <dimen name="text_size_title">18sp</dimen>
+    <dimen name="item_contain">12dp</dimen>
+    <dimen name="item_margin">16dp</dimen>
+    <dimen name="img_normal_height">64dp</dimen>
+    <dimen name="img_normal_weight">64dp</dimen>
+</resources>
