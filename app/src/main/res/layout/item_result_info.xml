@@ -36,6 +36,7 @@
                 android:id="@+id/image_express"
                 android:layout_width="@dimen/img_normal_weight"
                 android:layout_height="@dimen/img_normal_height"
+                android:src="@mipmap/shunfeng"
                 android:layout_below="@+id/tv_Courier_number"
                 android:layout_centerVertical="true"
                 android:layout_marginTop="6dp"
@@ -46,7 +47,7 @@
                 android:layout_height="@dimen/img_normal_height"
                 android:layout_alignTop="@+id/image_express"
                 android:layout_centerVertical="true"
-                android:layout_marginLeft="3dp"
+                android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
                 android:layout_toEndOf="@+id/image_express"
                 android:padding="2dp">

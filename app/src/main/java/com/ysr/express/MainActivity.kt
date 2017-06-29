@@ -1,6 +1,7 @@
 package com.ysr.express
 
 import com.ysr.news.BaseActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
@@ -12,8 +13,9 @@ class MainActivity : BaseActivity() {
 
     }
 
-    override fun initview() {
-
+    override fun initView() {
+        setSupportActionBar(toolbar)
+        supportActionBar?.setTitle(R.string.text_null)
     }
 
 

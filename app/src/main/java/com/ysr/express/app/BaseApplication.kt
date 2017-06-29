@@ -24,30 +24,37 @@ class BaseApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        baseApplication = this
+        C.baseApplication = this
+        C.context = applicationContext
         //初始化logger
         logInit(BuildConfig.LOG_DEBUG)
+    }
+
+    object C {
+        var baseApplication: BaseApplication? = null
+        lateinit var context: Context
     }
 
     /**
      * companion object 表示外部类的一个伴生对象
      */
     companion object {
-        var baseApplication: BaseApplication? = null
 
 
         val instance: BaseApplication?
             get() {
-                if (null == baseApplication) {
+                if (null == C.baseApplication) {
                     throw RuntimeException("必须先实例化Application")
                 }
-                return baseApplication
+                return C.baseApplication
             }
 
         val appResources: Resources
-            get() = baseApplication!!.resources
+            get() = C.baseApplication!!.resources
 
-
+        fun getContext(): Context {
+            return C.context
+        }
     }
 
     //初始化分包
