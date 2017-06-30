@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- app主色调-->
-    <color name="main_color">#035294</color>
+    <color name="main_color">#2196f3</color>
+    <color name="white">#FFFFFF</color>
 </resources>

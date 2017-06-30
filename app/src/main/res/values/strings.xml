@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">便民速递</string>
     <string name="text_null"></string>
+    <string name="title_search">查快递</string>
+    <string name="title_post">寄快递</string>
+    <string name="title_sweep">扫一扫</string>
 
 </resources>

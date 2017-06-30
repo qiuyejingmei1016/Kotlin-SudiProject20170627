@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="com.ysr.express.MainActivity">
+    tools:context="com.ysr.express.ui.activity.MainActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -38,6 +38,7 @@
         app:layout_widthPercent="100%">
 
         <LinearLayout
+            android:id="@+id/ll_search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -52,10 +53,11 @@
             <TextView
                 style="@style/text_normal"
                 android:layout_marginTop="6dp"
-                android:text="查快递" />
+                android:text="@string/title_search" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_post"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -70,10 +72,11 @@
             <TextView
                 style="@style/text_normal"
                 android:layout_marginTop="6dp"
-                android:text="寄快递" />
+                android:text="@string/title_post" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/ll_sweep"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -88,7 +91,7 @@
             <TextView
                 style="@style/text_normal"
                 android:layout_marginTop="6dp"
-                android:text="扫一扫" />
+                android:text="@string/title_sweep" />
         </LinearLayout>
 
     </LinearLayout>
