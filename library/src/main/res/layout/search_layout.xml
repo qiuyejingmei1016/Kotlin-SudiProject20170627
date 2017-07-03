@@ -28,7 +28,7 @@
                 android:drawablePadding="5dp"
                 android:hint="订单编号"
                 android:imeOptions="actionSearch"
-                android:inputType="text"
+                android:inputType="number"
                 android:textSize="12sp" />
 
             <ImageView
