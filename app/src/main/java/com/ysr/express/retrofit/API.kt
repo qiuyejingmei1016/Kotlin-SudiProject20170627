@@ -8,11 +8,11 @@ object API {
     /**
      * 电商ID
      */
-    val EBusinessID = "464846"
+    val EBusinessID = "1293600"
     /**
      * 电商加密私钥，快递鸟提供，注意保管，不要泄漏
      */
-    val AppKey = "dwadad-526b-45da-b091-f728eb72b908"
+    val AppKey = "53a2e42e-4b0f-47b3-8d5b-36ff13acc733"
     /**
      * 单号识别请求url
      */

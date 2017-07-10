@@ -3,4 +3,5 @@
     <!-- app主色调-->
     <color name="main_color">#2196f3</color>
     <color name="white">#FFFFFF</color>
+    <color name="gray">#efeff4</color>
 </resources>

@@ -28,6 +28,7 @@
 
 
     <LinearLayout
+        android:id="@+id/ll_menu"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_below="@+id/toolbar"
@@ -97,5 +98,16 @@
 
     </LinearLayout>
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/ac_srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_menu">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/main_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </com.ysr.library.percent.PercentRelativeLayout>

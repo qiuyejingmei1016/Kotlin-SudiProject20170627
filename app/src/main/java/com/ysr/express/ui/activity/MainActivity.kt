@@ -13,8 +13,13 @@ import kotlinx.android.synthetic.main.activity_main.*
  * 邮箱 ysr200808@163.com
  */
 class MainActivity : BaseActivity(), View.OnClickListener {
-
-
+    //这样玩是找死的
+    val color_black: Int = 0xffffffff as Int
+    /**
+     * Integer
+     * Min_Value=0x80000000
+     * Max_Value=0x7fffffff
+     */
     var searchFragment: SearchFragment? = null
     override fun getLayoutId(): Int {
         return R.layout.activity_main
