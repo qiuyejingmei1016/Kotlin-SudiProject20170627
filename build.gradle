@@ -10,7 +10,9 @@ buildscript {
         androidCompileSdkVersion = 26
         androidApplicationId = 'com.ysr.express'
         multidexVersion = '1.0.0'
-        retrofitVersion='2.3.0'
+        retrofitVersion = '2.3.0'
+        retrofit2rxadapterVersion = '2.0.0'
+        okhttp3logVersion = '3.8.0'
     }
     repositories {
         jcenter()
