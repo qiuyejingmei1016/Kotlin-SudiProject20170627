@@ -8,7 +8,7 @@ object API {
     /**
      * 电商ID
      */
-    val EBusinessID = "1293600"
+    val EBusinessID = 1293600
     /**
      * 电商加密私钥，快递鸟提供，注意保管，不要泄漏
      */
@@ -16,7 +16,7 @@ object API {
     /**
      * 单号识别请求url
      */
-    val ExpressReqURL = "http://api.kdniao.cc/Ebusiness/EbusinessOrderHandle.aspx"
+    val ExpressReqURL = "http://api.kdniao.cc"
     /**
      * 快递公司客户电话html
      */

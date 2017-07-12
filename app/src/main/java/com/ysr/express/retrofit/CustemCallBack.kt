@@ -1,5 +1,6 @@
 package com.ysr.express.retrofit
 
+import com.ysr.library.utils.LogUtils
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,7 +19,7 @@ abstract class CustemCallBack<T> : Callback<T> {
             }
         }
 
-        println(call?.request()?.url())
+        LogUtils.loge(call?.request()?.url().toString())
     }
 
     override fun onFailure(call: Call<T>?, t: Throwable?) {
