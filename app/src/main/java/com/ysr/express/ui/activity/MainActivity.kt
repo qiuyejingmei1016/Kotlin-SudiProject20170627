@@ -14,13 +14,14 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 class MainActivity : BaseActivity(), View.OnClickListener {
     //这样玩是找死的
-    val color_black: Int = 0xffffffff as Int
+//    val color_black: Int = 0xffffffff as Int
     /**
      * Integer
      * Min_Value=0x80000000
      * Max_Value=0x7fffffff
      */
     var searchFragment: SearchFragment? = null
+
     override fun getLayoutId(): Int {
         return R.layout.activity_main
     }
@@ -29,6 +30,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
     }
 
+    //初始化view
     override fun initView() {
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle(R.string.text_null)
@@ -41,13 +43,13 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.ll_search -> {
+            R.id.ll_search -> {//查询
                 startActivity(Intent(this, SearchActivity::class.java))
             }
-            R.id.ll_post -> {
+            R.id.ll_post -> {//邮寄
                 startActivity(Intent(this, PostActivity::class.java))
             }
-            R.id.ll_sweep -> {
+            R.id.ll_sweep -> {//扫一扫
                 startActivity(Intent(this, SweepActivity::class.java))
             }
         }
