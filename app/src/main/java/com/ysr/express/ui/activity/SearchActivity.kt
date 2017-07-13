@@ -6,6 +6,9 @@ import com.ysr.express.retrofit.API
 import com.ysr.express.retrofit.APIService
 import com.ysr.express.retrofit.BaseRetrofit
 import com.ysr.library.utils.HttpUtils
+import com.ysr.library.utils.LogUtils
+import com.ysr.library.utils.SearchView
+import com.ysr.library.utils.SearchView.SearchViewListener
 import com.ysr.news.BaseActivity
 import kotlinx.android.synthetic.main.activity_search.*
 import retrofit2.Call
@@ -16,7 +19,9 @@ import retrofit2.Response
  * Created by ysr on 2017/6/30 11:24.
  * 邮箱 ysr200808@163.com
  */
-class SearchActivity : BaseActivity() {
+class SearchActivity : BaseActivity(), SearchViewListener {
+
+
     override fun getLayoutId(): Int {
         return R.layout.activity_search
     }
@@ -30,11 +35,12 @@ class SearchActivity : BaseActivity() {
         supportActionBar?.setTitle(R.string.text_null)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         as_srl.isEnabled = false
-        loadData()
+        val sv = findViewById(R.id.sv) as SearchView
+        sv.setSearchViewListener(svListener())
+
     }
 
-    fun loadData() {
-        val LogisticCode = "1000745320654"
+    fun loadData(LogisticCode: String) {
         val requestData = "{LogisticCode:$LogisticCode}"
         val RequestData = HttpUtils.urlEncoder(requestData, "UTF-8")
         val dataSign = HttpUtils.encrypt(requestData, API.AppKey, "UTF-8")
@@ -52,4 +58,27 @@ class SearchActivity : BaseActivity() {
                     }
                 })
     }
+
+    //监听搜索
+    inner class svListener : SearchViewListener {
+        val LogisticCode = "1000745320654"
+        override fun onRefreshAutoComplete(text: String?) {
+        }
+
+        override fun onSearch(text: String?) {
+            loadData(text!!)
+            LogUtils.loge(text)
+        }
+
+    }
+
+    override fun onRefreshAutoComplete(text: String?) {
+
+    }
+
+    override fun onSearch(text: String?) {
+        loadData(text!!)
+        LogUtils.loge(text)
+    }
+
 }
