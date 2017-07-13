@@ -50,7 +50,7 @@
         </activity>
         <activity android:name=".ui.activity.SearchActivity" />
         <activity android:name=".ui.activity.PostActivity" />
-        <activity android:name=".ui.activity.SweepActivity"></activity>
+        <activity android:name=".ui.activity.SweepActivity" />
     </application>
 
 </manifest>
