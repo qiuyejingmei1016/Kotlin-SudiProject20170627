@@ -34,7 +34,8 @@ class SearchActivity : BaseActivity() {
     }
 
     fun loadData() {
-        val requestData = "{LogisticCode:1000745320654}"
+        val LogisticCode = "1000745320654"
+        val requestData = "{LogisticCode:$LogisticCode}"
         val RequestData = HttpUtils.urlEncoder(requestData, "UTF-8")
         val dataSign = HttpUtils.encrypt(requestData, API.AppKey, "UTF-8")
         val DataSign = HttpUtils.urlEncoder(dataSign, "UTF-8")

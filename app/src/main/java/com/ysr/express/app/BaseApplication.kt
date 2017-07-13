@@ -11,7 +11,7 @@ import com.ysr.news.BaseActivity
 import java.util.*
 
 
-/**
+/**BaseApplication
  * Created by ysr on 2017/6/19 12:39.
  * 邮箱 ysr200808@163.com
  */

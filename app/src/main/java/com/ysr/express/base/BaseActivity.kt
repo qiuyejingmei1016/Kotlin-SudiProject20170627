@@ -11,6 +11,10 @@ import com.ysr.express.R
 import com.ysr.library.commonwidget.StatusBarCompat
 import com.ysr.news.app.BaseApplication
 
+/**基类Activity
+ * Created by ysr on 2017/7/13 8:48.
+ * 邮箱 ysr200808@163.com
+ */
 abstract class BaseActivity : AppCompatActivity() {
     var mContext: Context? = null
     var app: BaseApplication? = null

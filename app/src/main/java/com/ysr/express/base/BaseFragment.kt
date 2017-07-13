@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-/**基类
+/**基类Fragment
  * Created by ysr on 2017/6/29 17:09.
  * 邮箱 ysr200808@163.com
  */
