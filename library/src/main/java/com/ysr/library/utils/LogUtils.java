@@ -21,7 +21,7 @@ public class LogUtils {
     public static void logInit(boolean debug) {
         DEBUG_ENABLE = debug;
         if (DEBUG_ENABLE) {
-            Logger.init(AppLibConfig.INSTANCE.getDEBUG_TAG())                 // default PRETTYLOGGER or use just init()
+            Logger.init(AppLibConfig.DEBUG_TAG)                 // default PRETTYLOGGER or use just init()
                     .methodCount(2)                 // default 2
                     .logLevel(LogLevel.FULL)        // default LogLevel.FULL
                     .methodOffset(0);                // default 0

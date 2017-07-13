@@ -14,10 +14,10 @@ class RequestShipperName {
      * Shippers : [{"ShipperCode":"YD","ShipperName":"韵达快递"},{"ShipperCode":"EMS","ShipperName":"EMS"},{"ShipperCode":"HTKY","ShipperName":"百世汇通"}]
      */
 
-    var eBusinessID: String? = null
-    var isSuccess: Boolean = false
-    var logisticCode: String? = null
-    var shippers: List<ShippersBean>? = null
+    var EBusinessID: String? = null
+    var Success: Boolean = false
+    var LogisticCode: String? = null
+    var Shippers: List<ShippersBean>? = null
 
     class ShippersBean {
         /**
@@ -25,7 +25,7 @@ class RequestShipperName {
          * ShipperName : 韵达快递
          */
 
-        var shipperCode: String? = null
-        var shipperName: String? = null
+        var ShipperCode: String? = null
+        var ShipperName: String? = null
     }
 }

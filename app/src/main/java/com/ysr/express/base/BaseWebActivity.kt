@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity
  * 邮箱 ysr200808@163.com
  */
 abstract class BaseWebActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(getLayoutId)

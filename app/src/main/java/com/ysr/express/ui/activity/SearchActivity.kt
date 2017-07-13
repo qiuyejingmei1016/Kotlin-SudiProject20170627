@@ -1,6 +1,8 @@
 package com.ysr.express.ui.activity
 
+import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import com.ysr.express.R
 import com.ysr.express.adapter.SearchListAdapter
@@ -19,9 +21,10 @@ import retrofit2.Response
  * Created by ysr on 2017/6/30 11:24.
  * 邮箱 ysr200808@163.com
  */
-class SearchActivity : BaseActivity() {
+class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener {
+
     var adapter: SearchListAdapter? = null
-     var list: List<RequestShipperName.ShippersBean>?=null
+    var list: List<RequestShipperName.ShippersBean>? = null
     override fun getLayoutId(): Int {
         return R.layout.activity_search
     }
@@ -36,8 +39,11 @@ class SearchActivity : BaseActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         as_srl.isEnabled = false
         sv.setSearchViewListener(svListener())
-        list=ArrayList<RequestShipperName.ShippersBean>()
+        list = ArrayList<RequestShipperName.ShippersBean>()
         adapter = SearchListAdapter(mContext, list)
+        adapter!!.setItemClickListener(this)
+        as_sv_list.layoutManager = LinearLayoutManager(mContext)
+        as_sv_list.adapter = adapter
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
@@ -59,8 +65,8 @@ class SearchActivity : BaseActivity() {
                 .searchData(RequestData, API.EBusinessID, 2002, 2, DataSign)
                 .enqueue(object : CustemCallBack<RequestShipperName>() {
                     override fun onSuccess(response: Response<RequestShipperName>?) {
-                        if (response?.body()!!.isSuccess) {
-                            list= response?.body()!!.shippers!!
+                        if (response?.body()!!.Success) {
+                            list = response?.body()!!.Shippers!!
                             adapter!!.update(list)
                         }
 
@@ -75,7 +81,6 @@ class SearchActivity : BaseActivity() {
 
     //监听搜索
     inner class svListener : SearchViewListener {
-        val LogisticCode = "1000745320654"
         override fun onRefreshAutoComplete(text: String?) {
             loadData(text!!)
         }
@@ -83,6 +88,10 @@ class SearchActivity : BaseActivity() {
         override fun onSearch(text: String?) {
             loadData(text!!)
         }
+
+    }
+
+    override fun onItemTextClick(view: View?, position: Int, tag: RequestShipperName.ShippersBean?) {
 
     }
 }
