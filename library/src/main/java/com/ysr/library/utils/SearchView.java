@@ -93,7 +93,7 @@ public class SearchView extends LinearLayout implements View.OnClickListener {
      */
     private void notifyStartSearching(String text) {
         if (mListener != null) {
-            mListener.onSearch(etInput.getText().toString());
+            mListener.onSearch(text);
         }
         //隐藏软键盘
         InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
