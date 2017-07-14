@@ -23,6 +23,7 @@ import retrofit2.Response
  */
 class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener {
 
+
     var adapter: SearchListAdapter? = null
     var list: List<RequestShipperName.ShippersBean>? = null
     override fun getLayoutId(): Int {
@@ -40,7 +41,7 @@ class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener {
         as_srl.isEnabled = false
         sv.setSearchViewListener(svListener())
         list = ArrayList<RequestShipperName.ShippersBean>()
-        adapter = SearchListAdapter(mContext, list)
+        adapter = SearchListAdapter(mContext!!, list)
         adapter!!.setItemClickListener(this)
         as_sv_list.layoutManager = LinearLayoutManager(mContext)
         as_sv_list.adapter = adapter
@@ -67,7 +68,7 @@ class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener {
                     override fun onSuccess(response: Response<RequestShipperName>?) {
                         if (response!!.body()!!.Success) {
                             list = response!!.body()!!.Shippers!!
-                            adapter!!.update(list)
+                            adapter!!.update(list!!)
                         }
                     }
 
@@ -89,7 +90,8 @@ class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener {
 
     }
 
-    override fun onItemTextClick(view: View?, position: Int, tag: RequestShipperName.ShippersBean?) {
+    override fun onItemTextClick(view: View, position: Int, tag: RequestShipperName.ShippersBean) {
 
     }
+
 }
