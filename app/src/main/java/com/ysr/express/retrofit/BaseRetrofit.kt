@@ -112,12 +112,12 @@ class BaseRetrofit private constructor() {
             //这个chain里面包含了request和response，所以你要什么都可以从这里拿
             val request = chain.request()
 
-            val t1 = System.nanoTime()//请求发起的时间
+//            val t1 = System.nanoTime()//请求发起的时间
             println(String.format("发送请求 %s on %s%n%s",
                     request.url(), chain.connection(), request.headers()))
             val response = chain.proceed(request)
 
-            val t2 = System.nanoTime()//收到响应的时间
+//            val t2 = System.nanoTime()//收到响应的时间
 
             //这里不能直接使用response.body().string()的方式输出日志
             //因为response.body().string()之后，response中的流会被关闭，程序会报错，我们需要创建出一

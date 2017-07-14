@@ -4,19 +4,23 @@ package com.ysr.express.bean
  * Created by ysr on 2017/7/13 16:46.
  * 邮箱 ysr200808@163.com
  */
-class CompanyData {
-    var obj: List<ObjectData>? = null
+class ComDataBean {
 
-    class ObjectData {
         var title: String? = null
-        var company: List<Company>? = null
+        var company: List<CompanyBean>? = null
 
-        class Company {
+        class CompanyBean {
+            /**
+             * name : 顺丰
+             * code : SF
+             * logo : 56/shunfeng.png
+             */
+
             var name: String? = null
             var code: String? = null
             var logo: String? = null
         }
-    }
+
 
 
 }

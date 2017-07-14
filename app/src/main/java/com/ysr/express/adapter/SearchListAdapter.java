@@ -9,12 +9,20 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 import com.ysr.express.R;
-import com.ysr.express.bean.CompanyData;
+import com.ysr.express.bean.ComDataBean;
 import com.ysr.express.bean.RequestShipperName;
-import com.ysr.library.config.AppLibConfig;
+import com.ysr.library.utils.ComUtils;
+import com.ysr.library.utils.LogUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +34,8 @@ public class SearchListAdapter extends RecyclerView.Adapter {
     private Context context;
     private List<RequestShipperName.ShippersBean> mData;
     private onItemClickListener itemClickListener;
+    private ComDataBean userBean;
+    private ArrayList<ComDataBean> beanList;
 
     public void setData(List<RequestShipperName.ShippersBean> data) {
         mData = data;
@@ -43,6 +53,26 @@ public class SearchListAdapter extends RecyclerView.Adapter {
     public SearchListAdapter(Context context, List<RequestShipperName.ShippersBean> mData) {
         this.context = context;
         this.mData = mData;
+        getImageUrl();
+    }
+
+    //解析快递公司图标Json
+    private void getImageUrl() {
+        String result = ComUtils.getJson(context, "CompanyData.json");
+        //先转JsonObject
+        JsonObject jsonObject = new JsonParser().parse(result).getAsJsonObject();
+        //再转JsonArray 加上数据头
+        JsonArray jsonArray = jsonObject.getAsJsonArray("company_data");
+        Gson gson = new Gson();
+
+        beanList = new ArrayList<>();
+        //循环遍历
+        for (JsonElement user : jsonArray) {
+            //通过反射 ComDataBean.class
+            userBean = gson.fromJson(user, new TypeToken<ComDataBean>() {
+            }.getType());
+            beanList.add(userBean);
+        }
     }
 
     @Override
@@ -55,17 +85,17 @@ public class SearchListAdapter extends RecyclerView.Adapter {
         final int adjPosition = position;
         ViewHolder viewHolder = (ViewHolder) holder;
         viewHolder.tv_Courier_info.setText(mData.get(position).getShipperName());
-        String result = AppLibConfig.jsons;
 
-        CompanyData codeCompany = new Gson().fromJson(result, CompanyData.class);
-
-//        for (int i = 0; i < list.size(); i++) {
-//            if (mData.get(position).getShipperCode().equals(list.get(i).getCode())) {
-//                Glide.with(context)
-//                        .load("https://www.kuaidi100.com/images/all/" + list.get(i).getLogo())
-//                        .into(viewHolder.image_express);
-//            }
-//        }
+        for (int i = 0; i < beanList.size(); i++) {
+            for (int j = 0; j < beanList.get(i).getCompany().size(); j++) {
+                if (mData.get(position).getShipperCode().equals(beanList.get(i).getCompany().get(j).getCode())) {
+                    LogUtils.loge(beanList.get(i).getCompany().get(j).getLogo());
+                    Glide.with(context)
+                            .load("https://www.kuaidi100.com/images/all/" + beanList.get(i).getCompany().get(j).getLogo())
+                            .into(viewHolder.image_express);
+                }
+            }
+        }
 
         if (null != itemClickListener) {
             viewHolder.cv_click.setOnClickListener(new View.OnClickListener() {

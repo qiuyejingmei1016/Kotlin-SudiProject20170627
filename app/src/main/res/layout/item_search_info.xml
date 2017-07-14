@@ -25,7 +25,7 @@
                 android:layout_height="36dp"
                 android:layout_centerVertical="true"
                 android:scaleType="fitXY"
-                android:src="@mipmap/shunfeng" />
+                android:src="@mipmap/app_res_images_ic_no_exist" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"

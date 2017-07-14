@@ -65,12 +65,10 @@ class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener {
                 .searchData(RequestData, API.EBusinessID, 2002, 2, DataSign)
                 .enqueue(object : CustemCallBack<RequestShipperName>() {
                     override fun onSuccess(response: Response<RequestShipperName>?) {
-                        if (response?.body()!!.Success) {
-                            list = response?.body()!!.Shippers!!
+                        if (response!!.body()!!.Success) {
+                            list = response!!.body()!!.Shippers!!
                             adapter!!.update(list)
                         }
-
-
                     }
 
                     override fun onFail(message: String) {

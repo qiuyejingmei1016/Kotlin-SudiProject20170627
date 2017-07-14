@@ -1,4 +1,4 @@
-﻿[
+﻿{"company_data":[
   {
     "company":[
       {"name":"顺丰","code":"SF","logo":"56/shunfeng.png"},
@@ -172,4 +172,4 @@
     ],
     "title":"Z"
   }
-]
+]}
