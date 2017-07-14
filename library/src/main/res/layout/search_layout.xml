@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="right|center_vertical"
                 android:layout_marginRight="20dp"
-                android:src="@mipmap/jc_back_tiny_normal"
+                android:src="@mipmap/app_res_images_ic_delete"
                 android:visibility="gone" />
         </FrameLayout>
 

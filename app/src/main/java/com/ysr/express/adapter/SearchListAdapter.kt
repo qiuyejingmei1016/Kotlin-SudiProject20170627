@@ -38,7 +38,6 @@ class SearchListAdapter(val context: Context, var mData: List<RequestShipperName
             .diskCacheStrategy(DiskCacheStrategy.NONE)!!
     init {
         getImageUrl()
-
     }
 
     fun setData(list: List<RequestShipperName.ShippersBean>) {
@@ -90,7 +89,7 @@ class SearchListAdapter(val context: Context, var mData: List<RequestShipperName
                             .load(API.LogoBaseUrl + beanList!![i].company!![j].logo!!)
                             .apply(options)
                             .into(viewHolder.image_express)
-                    return
+//                    return
                 } else {
                     Glide.with(context)
                             .load(R.mipmap.app_res_images_ic_no_exist)

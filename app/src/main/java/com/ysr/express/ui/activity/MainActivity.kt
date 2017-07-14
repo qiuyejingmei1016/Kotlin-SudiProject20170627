@@ -2,7 +2,6 @@ package com.ysr.express.ui.activity
 
 import android.content.Intent
 import android.view.View
-import android.widget.LinearLayout
 import com.ysr.express.R
 import com.ysr.express.ui.fragment.SearchFragment
 import com.ysr.news.BaseActivity
@@ -35,7 +34,6 @@ class MainActivity : BaseActivity(), View.OnClickListener {
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle(R.string.text_null)
         searchFragment = SearchFragment()
-        val ll_search = findViewById(R.id.ll_search) as LinearLayout
         ll_search.setOnClickListener(this)
         ll_post.setOnClickListener(this)
         ll_sweep.setOnClickListener(this)

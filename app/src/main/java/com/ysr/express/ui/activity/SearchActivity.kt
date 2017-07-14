@@ -1,5 +1,6 @@
 package com.ysr.express.ui.activity
 
+import android.content.Intent
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
 import android.view.View
@@ -91,7 +92,8 @@ class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener {
     }
 
     override fun onItemTextClick(view: View, position: Int, tag: RequestShipperName.ShippersBean) {
-
+        val intent = Intent(this, SearchDetailsActivity::class.java)
+        startActivity(intent)
     }
 
 }

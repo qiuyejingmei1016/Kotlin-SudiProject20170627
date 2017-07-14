@@ -10,6 +10,7 @@ import java.security.MessageDigest;
  */
 
 public class HttpUtils {
+
     /**
      * MD5加密
      * @param str 内容
@@ -38,7 +39,7 @@ public class HttpUtils {
      * @param charset 编码方式
      * @throws UnsupportedEncodingException
      */
-    private static String base64(String str, String charset) throws UnsupportedEncodingException {
+    public static String base64(String str, String charset) throws UnsupportedEncodingException{
         String encoded = base64Encode(str.getBytes(charset));
         return encoded;
     }
@@ -67,9 +68,7 @@ public class HttpUtils {
         return base64(MD5(content, charset), charset);
     }
 
-
-
-    private static char[] base64EncodeChars = new char[] {
+    public static char[] base64EncodeChars = new char[] {
             'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
             'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',
             'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
