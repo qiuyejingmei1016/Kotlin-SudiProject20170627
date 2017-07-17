@@ -1,7 +1,11 @@
 package com.ysr.express.ui.activity
 
+import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import com.google.gson.Gson
+import com.ysr.express.Data
 import com.ysr.express.R
+import com.ysr.express.adapter.TraceListAdapter
 import com.ysr.express.bean.RequestEbsDetail
 import com.ysr.express.retrofit.API
 import com.ysr.express.retrofit.APIService
@@ -13,13 +17,15 @@ import kotlinx.android.synthetic.main.activity_search_details.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 /**订单轨迹
  * Created by ysr on 2017/7/14 14:09.
  * 邮箱 ysr200808@163.com
  */
 class SearchDetailsActivity : BaseActivity(), View.OnClickListener {
-
+    private var traceList: List<RequestEbsDetail.TracesBean> = ArrayList()
+    private var adapter: TraceListAdapter? = null
 
     override fun getLayoutId(): Int {
         return R.layout.activity_search_details
@@ -30,15 +36,16 @@ class SearchDetailsActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun initView() {
-        btn_search.setOnClickListener(this)
+        val data = Gson().fromJson(Data.data, RequestEbsDetail::class.java)
+        traceList = data.traces
+        adapter = TraceListAdapter(this, traceList)
+        rvTrace.layoutManager = LinearLayoutManager(this)
+        rvTrace.adapter = adapter
 
     }
+
     override fun onClick(v: View) {
-        when (v.id) {
-            R.id.btn_search -> {
-                loadData()
-            }
-        }
+
     }
 
     fun loadData() {

@@ -2,7 +2,7 @@ package com.ysr.express.bean;
 
 import java.util.List;
 
-/**
+/**及时查询
  * Created by ysr on 2017/7/14 15:52.
  * 邮箱 ysr200808@163.com
  */
