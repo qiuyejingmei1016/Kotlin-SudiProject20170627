@@ -62,8 +62,8 @@ class SearchDetailsActivity : BaseActivity(), View.OnClickListener {
                 .searchDetailsData(params)
                 .enqueue(object : CustemCallBack<RequestEbsDetail> (){
                     override fun onSuccess(response: Response<RequestEbsDetail>?) {
-                        if (response!!.body()!!.isSuccess) {
-                            adapter!!.update(response.body()!!.traces)
+                        if (response!!.body()!!.Success) {
+                            adapter!!.update(response.body()!!.Traces!!)
                         }
                     }
 

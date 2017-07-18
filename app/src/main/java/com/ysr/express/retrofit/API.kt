@@ -25,4 +25,7 @@ object API {
      * 快递公司图标
      */
     val LogoBaseUrl = "https://www.kuaidi100.com/images/all/"
+    val TYPE_TOP = 0x0000
+    val TYPE_NORMAL = 0x0001
+    val TYPE_BOTTOM = 0x0002
 }
