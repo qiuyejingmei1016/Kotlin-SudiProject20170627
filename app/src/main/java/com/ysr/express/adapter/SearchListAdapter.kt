@@ -36,6 +36,7 @@ class SearchListAdapter(val context: Context, var mData: List<RequestShipperName
 //                        .skipMemoryCache(true)
             .error(R.mipmap.app_res_images_ic_no_exist)
             .diskCacheStrategy(DiskCacheStrategy.NONE)!!
+
     init {
         getImageUrl()
     }
@@ -81,15 +82,15 @@ class SearchListAdapter(val context: Context, var mData: List<RequestShipperName
         val viewHolder = holder
         viewHolder.tv_Courier_info.text = mData!![position].ShipperName
 
-        for (i in beanList!!.indices) {
-            (0..beanList!![i].company!!.size - 1).forEach { j ->
+        loop@ for (i in beanList!!.indices) {
 
+            for (j in 0..beanList!![i].company!!.size){
                 if (mData!![position].ShipperCode == beanList!![i].company!![j].code) {
                     Glide.with(context)
                             .load(API.LogoBaseUrl + beanList!![i].company!![j].logo!!)
                             .apply(options)
                             .into(viewHolder.image_express)
-//                    return
+                    break@loop
                 } else {
                     Glide.with(context)
                             .load(R.mipmap.app_res_images_ic_no_exist)
@@ -97,7 +98,6 @@ class SearchListAdapter(val context: Context, var mData: List<RequestShipperName
                 }
             }
         }
-
         if (null != itemClickListener) {
             viewHolder.cv_click.setOnClickListener { v ->
                 val tag = v.tag
