@@ -74,28 +74,33 @@ class BaseRetrofit private constructor() {
         if (builder.interceptors() != null) {
             builder.interceptors().clear()
         }
-        if (BuildConfig.LOG_DEBUG) {
-            builder.addInterceptor(LoggingInterceptor()) //看请求时长开启System
-            // builder.addInterceptor(LoginInterceptor)
-        }
-        builder.addInterceptor { chain ->
-            val request = chain?.request()
-            if (!ConfigUtils.isOnle()) {
-                chain!!.proceed(request!!
-                        .newBuilder()
-                        .cacheControl(CacheControl.FORCE_CACHE)
-                        .build())
-            } else {
-                chain!!.proceed(
-                        request!!.newBuilder().build())
-            }
-        }
         builder.addNetworkInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR())
         builder.cache(Cache(BaseApplication.getContext().cacheDir, cacheSize))
         builder.connectTimeout(15, TimeUnit.SECONDS)
         builder.readTimeout(20, TimeUnit.SECONDS)
         builder.writeTimeout(30, TimeUnit.SECONDS)
         builder.retryOnConnectionFailure(true)
+        builder.addInterceptor { chain ->
+            val request = chain?.request()
+            if (!ConfigUtils.isOnle()) {
+                chain!!.proceed(request!!
+                        .newBuilder()
+                        .cacheControl(CacheControl.FORCE_CACHE)
+//                        .addHeader("accept", "*/*")
+//                        .addHeader("connection", "Keep-Alive")
+//                        .addHeader("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1;SV1)")
+//                        .addHeader("Content-Type", "application/x-www-form-urlencoded;charset=UTF-8")
+                        .build())
+            } else {
+                chain!!.proceed(
+                        request!!.newBuilder().build())
+            }
+        }
+        if (BuildConfig.LOG_DEBUG) {
+          //  builder.addInterceptor(LoggingInterceptor()) //看请求时长开启System
+            // builder.addInterceptor(LoginInterceptor)
+        }
+
         val client = builder.build()
         mRetrofit = Retrofit.Builder()
                 .baseUrl(API.ExpressReqURL)

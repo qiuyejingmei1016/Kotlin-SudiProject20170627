@@ -2,22 +2,20 @@ package com.ysr.express.ui.activity
 
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import com.google.gson.Gson
-import com.ysr.express.Data
 import com.ysr.express.R
 import com.ysr.express.adapter.TraceListAdapter
 import com.ysr.express.bean.RequestEbsDetail
 import com.ysr.express.retrofit.API
 import com.ysr.express.retrofit.APIService
 import com.ysr.express.retrofit.BaseRetrofit
+import com.ysr.express.retrofit.CustemCallBack
 import com.ysr.library.utils.HttpUtils
-import com.ysr.library.utils.LogUtils
 import com.ysr.news.BaseActivity
 import kotlinx.android.synthetic.main.activity_search_details.*
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 import java.util.*
+
+
 
 /**订单轨迹
  * Created by ysr on 2017/7/14 14:09.
@@ -36,12 +34,10 @@ class SearchDetailsActivity : BaseActivity(), View.OnClickListener {
     }
 
     override fun initView() {
-        val data = Gson().fromJson(Data.data, RequestEbsDetail::class.java)
-        traceList = data.traces
         adapter = TraceListAdapter(this, traceList)
         rvTrace.layoutManager = LinearLayoutManager(this)
         rvTrace.adapter = adapter
-
+        loadData()
     }
 
     override fun onClick(v: View) {
@@ -55,18 +51,24 @@ class SearchDetailsActivity : BaseActivity(), View.OnClickListener {
         val RequestData = HttpUtils.urlEncoder(requestData, "UTF-8")
         val dataSign = HttpUtils.encrypt(requestData, API.AppKey, "UTF-8")
         val DataSign = HttpUtils.urlEncoder(dataSign, "UTF-8")
+        val params = HashMap<String, String>()
+        params.put("RequestData",RequestData)
+        params.put("EBusinessID",  API.EBusinessID)
+        params.put("RequestType", "1002")
+        params.put("DataSign", DataSign)
+        params.put("DataType", "2")
         BaseRetrofit.instance
                 .createReq(APIService::class.java)
-                .searchDetailsData(RequestData, API.EBusinessID, 1002, 2, DataSign)
-                .enqueue(object : Callback<RequestEbsDetail> {
-                    override fun onResponse(call: Call<RequestEbsDetail>?, response: Response<RequestEbsDetail>?) {
-
+                .searchDetailsData(params)
+                .enqueue(object : CustemCallBack<RequestEbsDetail> (){
+                    override fun onSuccess(response: Response<RequestEbsDetail>?) {
+                        if (response!!.body()!!.isSuccess) {
+                            adapter!!.update(response.body()!!.traces)
+                        }
                     }
 
-                    override fun onFailure(call: Call<RequestEbsDetail>?, t: Throwable?) {
-                        LogUtils.loge(t!!.message)
+                    override fun onFail(message: String) {
                     }
-
                 })
     }
 }

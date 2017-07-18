@@ -8,7 +8,7 @@ object API {
     /**
      * 电商ID
      */
-    val EBusinessID = 1293600
+    val EBusinessID = "1293600"
     /**
      * 电商加密私钥，快递鸟提供，注意保管，不要泄漏
      */

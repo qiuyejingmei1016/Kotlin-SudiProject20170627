@@ -6,6 +6,7 @@ import retrofit2.Call
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.Query
+import retrofit2.http.QueryMap
 
 /**
  * Created by ysr on 2017/6/30 17:21.
@@ -16,18 +17,15 @@ interface APIService {
     @Headers("Content-Type:application/x-www-form-urlencoded")
     @POST("/Ebusiness/EbusinessOrderHandle.aspx")
     fun searchData(@Query("RequestData") RequestData: String,
-                   @Query("EBusinessID") EBusinessID: Int,
+                   @Query("EBusinessID") EBusinessID: String,
                    @Query("RequestType") RequestType: Int,
                    @Query("DataType") DataType: Int,
                    @Query("DataSign") DataSign: String
     ): Call<RequestShipperName>
+
     /**即时查询*/
     @Headers("Content-Type:application/x-www-form-urlencoded")
     @POST("/Ebusiness/EbusinessOrderHandle.aspx")
-    fun searchDetailsData(@Query("RequestData") RequestData: String,
-                   @Query("EBusinessID") EBusinessID: Int,
-                   @Query("RequestType") RequestType: Int,
-                   @Query("DataType") DataType: Int,
-                   @Query("DataSign") DataSign: String
+    fun searchDetailsData(@QueryMap map: Map<String, String>
     ): Call<RequestEbsDetail>
 }
