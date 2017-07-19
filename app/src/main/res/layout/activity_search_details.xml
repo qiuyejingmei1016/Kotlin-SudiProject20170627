@@ -7,7 +7,7 @@
     tools:context="com.ysr.express.ui.activity.SearchDetailsActivity">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar_DetailsActivity"
         style="@style/Toolbar"
         android:layout_width="0dp"
         android:layout_height="56dp"
@@ -44,6 +44,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar_DetailsActivity" />
 
 </android.support.constraint.ConstraintLayout>
