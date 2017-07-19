@@ -18,6 +18,7 @@ import com.ysr.news.BaseActivity
 import kotlinx.android.synthetic.main.activity_search.*
 import retrofit2.Response
 
+
 /**查询
  * Created by ysr on 2017/6/30 11:24.
  * 邮箱 ysr200808@163.com
@@ -93,6 +94,8 @@ class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener {
 
     override fun onItemTextClick(view: View, position: Int, tag: RequestShipperName.ShippersBean) {
         val intent = Intent(this, SearchDetailsActivity::class.java)
+        intent.putExtra("name","韵达")
+        intent.putExtra("tag", tag)
         startActivity(intent)
     }
 

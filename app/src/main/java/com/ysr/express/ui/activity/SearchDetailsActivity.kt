@@ -5,6 +5,7 @@ import android.view.MenuItem
 import com.ysr.express.R
 import com.ysr.express.adapter.TraceListAdapter
 import com.ysr.express.bean.RequestEbsDetail
+import com.ysr.express.bean.RequestShipperName
 import com.ysr.express.retrofit.API
 import com.ysr.express.retrofit.APIService
 import com.ysr.express.retrofit.BaseRetrofit
@@ -36,6 +37,9 @@ class SearchDetailsActivity : BaseActivity() {
         setSupportActionBar(toolbar_DetailsActivity)
         supportActionBar?.setTitle(R.string.text_null)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val tag = intent.getSerializableExtra("tag") as? RequestShipperName.ShippersBean
+        tv_Courier_info.text=tag!!.ShipperName
+        tv_Courier_num.text=tag!!.ShipperCode
         adapter = TraceListAdapter(this, traceList)
         rvTrace.layoutManager = LinearLayoutManager(this)
         rvTrace.adapter = adapter

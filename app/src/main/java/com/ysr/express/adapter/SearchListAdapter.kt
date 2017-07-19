@@ -90,6 +90,7 @@ class SearchListAdapter(val context: Context, var mData: List<RequestShipperName
                             .load(API.LogoBaseUrl + beanList!![i].company!![j].logo!!)
                             .apply(options)
                             .into(viewHolder.image_express)
+                    //终止此次循环
                     break@loop
                 } else {
                     Glide.with(context)
