@@ -65,7 +65,6 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:maxLines="1"
-                android:text="顺丰快递"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/text_size_normal" />
 
@@ -75,7 +74,6 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_Courier_info"
                 android:maxLines="1"
-                android:text="25648786315"
                 android:textSize="@dimen/text_size_normal" />
 
             <TextView
@@ -85,7 +83,6 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:maxLines="1"
-                android:text="已签收"
                 android:textSize="@dimen/text_size_normal" />
         </RelativeLayout>
 

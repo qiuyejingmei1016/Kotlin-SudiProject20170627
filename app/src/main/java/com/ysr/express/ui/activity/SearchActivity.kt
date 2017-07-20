@@ -25,7 +25,7 @@ import retrofit2.Response
  */
 class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener {
 
-
+    var code:String? = null
     var adapter: SearchListAdapter? = null
     var list: List<RequestShipperName.ShippersBean>? = null
     override fun getLayoutId(): Int {
@@ -83,19 +83,22 @@ class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener {
     //监听搜索
     inner class svListener : SearchViewListener {
         override fun onRefreshAutoComplete(text: String?) {
+            code=text
             loadData(text!!)
         }
 
         override fun onSearch(text: String?) {
+            code=text
             loadData(text!!)
         }
 
     }
 
-    override fun onItemTextClick(view: View, position: Int, tag: RequestShipperName.ShippersBean) {
+    override fun onItemTextClick(view: View, position: Int, tag: RequestShipperName.ShippersBean,imgUrl:String) {
         val intent = Intent(this, SearchDetailsActivity::class.java)
-        intent.putExtra("name","韵达")
         intent.putExtra("tag", tag)
+        intent.putExtra("code", code)
+        intent.putExtra("imgUrl", imgUrl)
         startActivity(intent)
     }
 

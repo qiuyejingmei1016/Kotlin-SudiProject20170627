@@ -32,9 +32,9 @@ class SearchListAdapter(val context: Context, var mData: List<RequestShipperName
     private var beanList: ArrayList<ComDataBean>? = null
     val options = RequestOptions()
             .centerCrop()
-            .placeholder(R.mipmap.app_res_images_ic_no_exist)
+            .placeholder(R.mipmap.app_res_images_ic_logo_default)
 //                        .skipMemoryCache(true)
-            .error(R.mipmap.app_res_images_ic_no_exist)
+            .error(R.mipmap.app_res_images_ic_logo_default)
             .diskCacheStrategy(DiskCacheStrategy.NONE)!!
 
     init {
@@ -80,21 +80,22 @@ class SearchListAdapter(val context: Context, var mData: List<RequestShipperName
     override fun onBindViewHolder(holder: SearchListAdapter.ViewHolder, position: Int) {
         val adjPosition = position
         val viewHolder = holder
+        var imgUrl=""
         viewHolder.tv_Courier_info.text = mData!![position].ShipperName
-
+        //注意indices和size
         loop@ for (i in beanList!!.indices) {
-
-            for (j in 0..beanList!![i].company!!.size){
+            for (j in 0..beanList!![i].company!!.size - 1) {
                 if (mData!![position].ShipperCode == beanList!![i].company!![j].code) {
+                     imgUrl=API.LogoBaseUrl + beanList!![i].company!![j].logo!!
                     Glide.with(context)
-                            .load(API.LogoBaseUrl + beanList!![i].company!![j].logo!!)
+                            .load(imgUrl)
                             .apply(options)
                             .into(viewHolder.image_express)
                     //终止此次循环
                     break@loop
                 } else {
                     Glide.with(context)
-                            .load(R.mipmap.app_res_images_ic_no_exist)
+                            .load(R.mipmap.app_res_images_ic_logo_default)
                             .into(viewHolder.image_express)
                 }
             }
@@ -103,7 +104,7 @@ class SearchListAdapter(val context: Context, var mData: List<RequestShipperName
             viewHolder.cv_click.setOnClickListener { v ->
                 val tag = v.tag
                 if (tag is RequestShipperName.ShippersBean) {
-                    itemClickListener!!.onItemTextClick(holder.itemView, adjPosition, tag)
+                    itemClickListener!!.onItemTextClick(holder.itemView, adjPosition, tag,imgUrl)
                 }
             }
             val one = mData!![adjPosition]
@@ -130,7 +131,7 @@ class SearchListAdapter(val context: Context, var mData: List<RequestShipperName
      * 点击事件选择回调
      */
     interface onItemClickListener {
-        fun onItemTextClick(view: View, position: Int, tag: RequestShipperName.ShippersBean)
+        fun onItemTextClick(view: View, position: Int, tag: RequestShipperName.ShippersBean,imgUrl:String)
     }
 
 }
