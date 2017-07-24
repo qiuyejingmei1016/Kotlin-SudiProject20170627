@@ -33,6 +33,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 
     //初始化view
     override fun initView() {
+
         setSupportActionBar(toolbar)
         supportActionBar?.setTitle(R.string.text_null)
         searchFragment = SearchFragment()
@@ -56,7 +57,7 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     }
 
     fun initQRScanner() {
-        mScannerHelper = QRScannerHelper(this)
+        mScannerHelper = QRScannerHelper(this@MainActivity)
         mScannerHelper!!.setCallBack({ result ->
             if (!TextUtils.isEmpty(result)) {
                 val intent = Intent(this, SearchActivity::class.java)
@@ -64,12 +65,19 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                 startActivity(intent)
             }
         })
+
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    /**
+     * data可能为null   加?
+     */
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (mScannerHelper != null) {
-            mScannerHelper!!.onActivityResult(requestCode, resultCode, data)
+        if ( null!=mScannerHelper) {
+            if (null != data) {
+                mScannerHelper!!.onActivityResult(requestCode, resultCode, data)
+            }
+
         }
     }
 }

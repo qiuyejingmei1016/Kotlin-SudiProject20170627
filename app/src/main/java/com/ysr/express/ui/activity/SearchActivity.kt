@@ -124,7 +124,7 @@ class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener, Vi
         })
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (mScannerHelper != null) {
             mScannerHelper!!.onActivityResult(requestCode, resultCode, data)

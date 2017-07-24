@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.ysr.express.ui.activity.PostActivity">
-<WebView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"></WebView>
+
+    <WebView
+        android:id="@+id/wv_post"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>
