@@ -97,7 +97,7 @@ class BaseRetrofit private constructor() {
             }
         }
         if (BuildConfig.LOG_DEBUG) {
-          //  builder.addInterceptor(LoggingInterceptor()) //看请求时长开启System
+            builder.addInterceptor(LoggingInterceptor()) //看请求时长开启System
             // builder.addInterceptor(LoginInterceptor)
         }
 

@@ -1,7 +1,9 @@
 package com.ysr.express.ui.activity
 
 import android.content.Intent
+import android.text.TextUtils
 import android.view.View
+import com.ysr.core.util.QRScannerHelper
 import com.ysr.express.R
 import com.ysr.express.ui.fragment.SearchFragment
 import com.ysr.news.BaseActivity
@@ -20,13 +22,13 @@ class MainActivity : BaseActivity(), View.OnClickListener {
      * Max_Value=0x7fffffff
      */
     var searchFragment: SearchFragment? = null
-
+    var mScannerHelper: QRScannerHelper? = null
     override fun getLayoutId(): Int {
         return R.layout.activity_main
     }
 
     override fun initPresenter() {
-
+        initQRScanner()
     }
 
     //初始化view
@@ -48,9 +50,26 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                 startActivity(Intent(this, PostActivity::class.java))
             }
             R.id.ll_sweep -> {//扫一扫
-                startActivity(Intent(this, SweepActivity::class.java))
+                mScannerHelper!!.startScanner()
             }
         }
     }
 
+    fun initQRScanner() {
+        mScannerHelper = QRScannerHelper(this)
+        mScannerHelper!!.setCallBack({ result ->
+            if (!TextUtils.isEmpty(result)) {
+                val intent = Intent(this, SearchActivity::class.java)
+                intent.putExtra("result", result)
+                startActivity(intent)
+            }
+        })
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (mScannerHelper != null) {
+            mScannerHelper!!.onActivityResult(requestCode, resultCode, data)
+        }
+    }
 }
