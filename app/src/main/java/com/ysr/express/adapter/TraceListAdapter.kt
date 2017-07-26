@@ -24,6 +24,8 @@ class TraceListAdapter(context: Context, private var traceList: List<RequestEbsD
         notifyDataSetChanged()
     }
 
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TraceListAdapter.ViewHolder {
         return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_trace, null))
 
@@ -37,7 +39,7 @@ class TraceListAdapter(context: Context, private var traceList: List<RequestEbsD
             // 字体颜色加深
             itemHolder.tvAcceptTime.setTextColor(0xff555555.toInt())
             itemHolder.tvAcceptStation.setTextColor(0xff555555.toInt())
-            itemHolder.tvDot.text = "已签收"
+//            itemHolder.tvDot.text = "已签收"
 
         } else if (getItemViewType(position) == API.TYPE_NORMAL) {
             itemHolder.tvTopLine.visibility = View.VISIBLE

@@ -119,6 +119,7 @@ class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener, Vi
         mScannerHelper = QRScannerHelper(this)
         mScannerHelper!!.setCallBack({ result ->
             if (!TextUtils.isEmpty(result)) {
+                code = result
                 loadData(result)
             }
         })
