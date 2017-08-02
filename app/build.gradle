@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'//用于编译Android代码
 apply plugin: 'kotlin-android-extensions'//用于扩展绑定关系
+apply plugin: 'kotlin-kapt'
 def releaseTime() {
     return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
 }
@@ -16,6 +17,11 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
+        kapt {
+            arguments {
+                arg("moduleName", project.getName())
+            }
+        }
     }
     signingConfigs {
         release {
@@ -79,6 +85,8 @@ dependencies {
     compile project(':library')
     compile 'com.android.support:appcompat-v7:26.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile "com.alibaba:arouter-api:$arouterVersion"
+    kapt  "com.alibaba:arouter-compiler:$aroutercompilerVersion"
     testCompile 'junit:junit:4.12'
 }
 repositories {

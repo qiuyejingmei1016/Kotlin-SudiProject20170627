@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.ysr.core.util.QRScannerHelper
 import com.ysr.express.R
 import com.ysr.express.adapter.SearchListAdapter
@@ -25,6 +26,7 @@ import retrofit2.Response
  * Created by ysr on 2017/6/30 11:24.
  * 邮箱 ysr200808@163.com
  */
+@Route(path = "/app/SearchActivity")
 class SearchActivity : BaseActivity(), SearchListAdapter.onItemClickListener, View.OnClickListener {
 
     var mScannerHelper: QRScannerHelper? = null

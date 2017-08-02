@@ -3,6 +3,7 @@ package com.ysr.express.ui.activity
 import android.content.Intent
 import android.text.TextUtils
 import android.view.View
+import com.alibaba.android.arouter.launcher.ARouter
 import com.ysr.core.util.QRScannerHelper
 import com.ysr.express.R
 import com.ysr.express.ui.fragment.SearchFragment
@@ -45,7 +46,8 @@ class MainActivity : BaseActivity(), View.OnClickListener {
     override fun onClick(v: View) {
         when (v.id) {
             R.id.ll_search -> {//查询
-                startActivity(Intent(this, SearchActivity::class.java))
+                ARouter.getInstance().build("/app/SearchActivity").navigation()
+//                startActivity(Intent(this, SearchActivity::class.java))
             }
             R.id.ll_post -> {//邮寄
                 startActivity(Intent(this, PostActivity::class.java))
