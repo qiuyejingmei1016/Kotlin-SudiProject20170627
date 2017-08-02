@@ -3,6 +3,7 @@ package com.ysr.express.ui.activity
 import android.graphics.Color
 import android.support.v7.widget.LinearLayoutManager
 import android.view.MenuItem
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
@@ -25,6 +26,7 @@ import java.util.*
  * Created by ysr on 2017/7/14 14:09.
  * 邮箱 ysr200808@163.com
  */
+@Route(path = "/app/SearchDetailsActivity")
 class SearchDetailsActivity : BaseActivity() {
     private var traceList: List<RequestEbsDetail.TracesBean> = ArrayList()
     private var adapter: TraceListAdapter? = null

@@ -50,7 +50,8 @@ class MainActivity : BaseActivity(), View.OnClickListener {
 //                startActivity(Intent(this, SearchActivity::class.java))
             }
             R.id.ll_post -> {//邮寄
-                startActivity(Intent(this, PostActivity::class.java))
+                ARouter.getInstance().build("/app/PostActivity").navigation()
+//                startActivity(Intent(this, PostActivity::class.java))
             }
             R.id.ll_sweep -> {//扫一扫
                 mScannerHelper!!.startScanner()

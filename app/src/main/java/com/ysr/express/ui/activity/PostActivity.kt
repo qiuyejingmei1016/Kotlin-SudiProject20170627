@@ -9,6 +9,7 @@ import android.webkit.WebView
 import android.webkit.WebViewClient
 import android.widget.ImageView
 import android.widget.LinearLayout
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.ysr.express.R
 import com.ysr.express.retrofit.API
 import com.ysr.news.BaseActivity
@@ -18,6 +19,7 @@ import kotlinx.android.synthetic.main.activity_post.*
  * Created by ysr on 2017/6/30 11:24.
  * 邮箱 ysr200808@163.com
  */
+@Route(path = "/app/PostActivity")
 class PostActivity : BaseActivity() {
     private var mIsErrorPage: Boolean = false
     private var mErrorView: View? = null
