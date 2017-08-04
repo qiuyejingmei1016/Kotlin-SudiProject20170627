@@ -9,6 +9,7 @@ import com.ysr.express.BuildConfig
 import com.ysr.library.app.EntityInfo
 import com.ysr.library.utils.LogUtils.logInit
 import com.ysr.news.BaseActivity
+import io.realm.Realm
 import java.util.*
 
 
@@ -35,6 +36,7 @@ class BaseApplication : Application() {
             ARouter.printStackTrace() // 打印日志的时候打印线程堆栈
         }
         ARouter.init(this) // 尽可能早，推荐在Application中初始化
+        Realm.init(this)//初始化Realm数据库
     }
 
     object C {
